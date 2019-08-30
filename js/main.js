@@ -13,8 +13,10 @@ function createNASAimage(picObj) {
     `;
 }
 
-function addImagetoDOM(htmlString) {
-  addImagetoDOM.innerHTML += htmlString;
+const nasaContainer = document.querySelector("#imageHolder");
+
+function addNasaToDom(htmlNasa) {
+  nasaContainer.innerHTML += htmlNasa;
 }
 
 fetch(
@@ -22,7 +24,7 @@ fetch(
 )
   .then(pics => pics.json())
   .then(parsedPics => {
-    console.table("parsedPics", parsedPics);
-    const imageHTML = createNASAimage(parsedPics);
-    addImagetoDOM(imageHTML);
+    console.table(parsedPics);
+    const nasaAsHTML = createNASAimage(parsedPics);
+    addNasaToDom(nasaAsHTML);
   });
